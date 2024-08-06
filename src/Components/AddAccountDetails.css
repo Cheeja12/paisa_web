@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.account-type-section {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.account-type-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.account-type-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #54471b; 
+  color: white;
+  cursor: pointer;
+}
+
+.account-type-button:hover {
+  border: 2px solid #ffb59a; 
+}
+.account-type-button.selected {
+  background-color: #f48773;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 0 20px; 
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ffb59a; 
+  border-radius: 5px;
+  background-color: #3d3230; 
+  color: white;
+  width: 100%;
+  max-width: 400px; 
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-picker label {
+  display: flex;
+  align-items: center;
+}
+
+.color-picker input[type="color"] {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.color-icon {
+  color: #fcb598; 
+  font-size: 20px;
+}
+
+.color-description {
+  color: white;
+  font-size: 12px;
+  margin-top: -10px; 
+}
+
+.toggle-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  margin: 10px 0;
+}
+
+.toggle-container span {
+  font-size: 14px;
+  color: white;
+}
+
+.toggle-container input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px; 
+  width: 40px; 
+  height: 20px; 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; 
+  width: 16px; 
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggle-container input:checked + .slider {
+  background-color: #ffb59a;
+}
+
+.toggle-container input:checked + .slider:before {
+  transform: translateX(20px); 
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffb59a; 
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px; 
+}

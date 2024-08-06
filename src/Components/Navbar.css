@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 700px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top:0;
+  left:0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 150px;
+  width: 150px; 
+  margin-right: 0px;
+}
+
+.logo-text {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(78, 52, 20);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  margin-right: 20px;
+  text-decoration: none;
+  color: rgb(78, 52, 20);
+  font-size: 20px;
+  display: inline-block;
+}
+
+.signup {
+  padding: 10px 20px;
+  margin-right: 70px;
+  background-color: rgb(78, 52, 20);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.signup:hover {
+  background-color: rgb(112, 70, 70);
+}
