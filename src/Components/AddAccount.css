@@ -4,7 +4,10 @@
   justify-content: space-between;
   height: 100vh;
   padding: 20px;
-  background-color: #2e1d16;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 69, 0, 0.4), transparent 60%), 
+    radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.6), transparent 60%), 
+    linear-gradient(120deg, rgba(139, 0, 0, 0.8), rgba(255, 69, 0, 0.7) 70%);
   color: #fff;
   width: 100vw;
   top: 0;
@@ -38,7 +41,7 @@ h2 {
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
-  color: #feb49b;
+  color: #f9d6c7;
 }
 
 .account-buttons {
@@ -55,7 +58,7 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 15px;
-  background-color: #73371f;
+  background-color: #bf360c;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -81,7 +84,7 @@ h2 {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #73371f;
+  background-color: #bf360c;
   border-radius: 8px;
   margin-bottom: 10px;
   gap: 10px;
@@ -114,7 +117,7 @@ h2 {
 
 .add-btn {
   padding: 10px 20px;
-  background-color: #73371f;
+  background-color: #bf360c;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -128,7 +131,7 @@ h2 {
 }
 
 .nav-button {
-  background-color: #73371f;
+  background-color: #bf360c;
   border: none;
   border-radius: 8px;
   font-size: 16px;

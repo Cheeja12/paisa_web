@@ -24,7 +24,7 @@ const WelcomePage = () => {
       blob.classList.add('blob', sizes[i]);
       blob.innerHTML = `
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%">
-          <path id="blob" d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#a35939"></path>
+          <path id="blob" d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#bf360c"></path>
         </svg>
       `;
       blob.style.top = positions[i].top;
