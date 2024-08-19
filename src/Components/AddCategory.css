@@ -1,0 +1,80 @@
+.add-category-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 69, 0, 0.4), transparent 60%), 
+    radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.6), transparent 60%), 
+    linear-gradient(120deg, rgba(139, 0, 0, 0.8), rgba(255, 69, 0, 0.7) 70%);
+  color: #fff;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  overflow-y: auto; 
+}
+
+.add-category-container.header {
+  text-align: center;
+}
+
+.icon-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-shapes {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recommended-section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.category-btn {
+  background-color: transparent;
+  border: 2px solid #ffdcc5;
+  border-radius: 20px;
+  color: #ffdcc5;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 180px;
+  box-sizing: border-box;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.footer-btn {
+  background-color: #a0522d;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  flex: 1;
+  margin: 5px;
+  text-align: center;
+}
