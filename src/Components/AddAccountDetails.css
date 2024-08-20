@@ -6,7 +6,6 @@
   padding: 20px; 
   min-height: 100vh; 
   width: 100vw; 
-  background-color: #2b2b2b; 
   box-sizing: border-box; 
   overflow-y: auto; 
 }
@@ -27,14 +26,14 @@
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background-color: #4a3b2b; 
+  background-color: #c44b24; 
   color: white;
   cursor: pointer;
   font-size: 14px; 
 }
 
 .account-type-button:hover {
-  border: 2px solid #ffb59a; 
+  border: 2px solid #f18a65; 
 }
 
 .account-type-button.selected {
@@ -54,7 +53,7 @@ input[type="number"] {
   padding: 12px;
   border: 1px solid #ffb59a;
   border-radius: 8px;
-  background-color: #3d3230;
+  background-color: #dc7704;
   color: white;
   width: 100%;
   box-sizing: border-box; 
@@ -81,7 +80,7 @@ input[type="number"] {
 }
 
 .color-icon {
-  color: #fcb598;
+  color: #d84207;
   font-size: 20px; 
 }
 
@@ -149,7 +148,7 @@ input[type="number"] {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
-  background-color: #ffb59a;
+  background-color: #c44b24;
   color: black;
   cursor: pointer;
   width: 100%;

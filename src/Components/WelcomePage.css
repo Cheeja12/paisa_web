@@ -5,7 +5,7 @@ body, html {
   height: 100%;
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  color: #ffbb96;
+  color: black;
   overflow: hidden; 
 }
 
@@ -17,10 +17,7 @@ body, html {
   width: 100vw;
   text-align: center;
   position: relative;
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(255, 69, 0, 0.4), transparent 60%), 
-    radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.6), transparent 60%), 
-    linear-gradient(120deg, rgba(139, 0, 0, 0.8), rgba(255, 69, 0, 0.7) 70%);
+  background: linear-gradient(180deg, #FF7E3D, #FF9F81);
 }
 
 .blobs {
@@ -82,17 +79,16 @@ body, html {
 }
 
 .welcome-page .content .logo {
-  width: 100px; 
-  height: 90px; 
-  margin-bottom: 5px;
-  padding-left: 190px;
+  width: 600px; 
+  height: 200px; 
+
 }
 
 .get-started-button {
   padding: 15px 30px;
   font-size: 16px;
-  color: #2d2b2b;
-  background-color: #ffbb96;
+  color: #f9d6c7;
+  background-color: #c44b24;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -103,6 +99,7 @@ body, html {
 
 .get-started-button:hover {
   background-color: #d18968;
+  color: black;
 }
 
 .arrow {
@@ -126,5 +123,5 @@ body, html {
   }
 }
 .welcome-page .content p,h1{
-  color: #f9d6c7;
+  color: #fbe2d8;
 }

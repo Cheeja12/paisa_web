@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AddCategory.css';
-import shapesImg from '../assets/Addcategory.png'; 
+import shapesImg from '../assets/addcategory.png'; 
 
 const categories = [
   { name: 'Childcare', icon: '🧒' },
@@ -18,6 +19,16 @@ const categories = [
 ];
 
 const AddCategory = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate('/next-page'); 
+  };
+
+  const handleBack = () => {
+    navigate('/AddAccount'); 
+  };
+
   return (
     <div className="add-category-container">
       <div className="header">
@@ -40,8 +51,8 @@ const AddCategory = () => {
       </div>
 
       <div className="footer">
-        <button className="footer-btn back-btn">← Back</button>
-        <button className="footer-btn next-btn">Next →</button>
+        <button className="footer-btn back-btn" onClick={handleBack}>← Back</button>
+        <button className="footer-btn next-btn" onClick={handleNext}>Next →</button>
       </div>
     </div>
   );
