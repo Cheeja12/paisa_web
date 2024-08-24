@@ -9,6 +9,7 @@ import LoginPage from './Components/LoginPage';
 import AddAccount from './Components/AddAccount';
 import AddAccountDetails from './Components/AddAccountDetails';
 import AddCategory from './Components/AddCategory';
+import Currency from './Components/Currency';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/addaccount" element={<AddAccount />} />
         <Route path="/addaccountdetails" element={<AddAccountDetails />} />
         <Route path="/addcategory" element={<AddCategory />} />
+        <Route path="/currency" element={<Currency />} />
       </Routes>
     </Router>
   </React.StrictMode>

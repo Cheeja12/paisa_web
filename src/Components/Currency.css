@@ -1,0 +1,147 @@
+.currency-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  width: 100vw;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #FF7E3D, #FF9F81);
+  color: #f9d6c7;
+  overflow-y: auto; 
+}
+
+.header {
+  flex-shrink: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-global {
+  font-size: 60px;
+  color: #c44b24;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #4B3A3A;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  flex-shrink: 0; 
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #f9d6c7;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #f9d6c7;
+  font-size: 18px;
+}
+
+.currency-list {
+  flex-grow: 1; 
+  overflow-y: auto; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  padding-bottom: 20px;
+}
+
+.currency-item {
+  background-color: #4B3A3A;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f9d6c7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.currency-item.selected {
+  background-color: #c44b24; 
+}
+
+.currency-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.currency-item span {
+  font-size: 24px;
+}
+
+.button-container {
+  flex-shrink: 0; 
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back-button,
+.done-button {
+  background-color: #c44b24;
+  color: #f9d6c7;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.back-button .arrow,
+.done-button .arrow {
+  font-size: 16px;
+}
+
+.back-button:hover,
+.done-button:hover {
+  background-color: #8B4513;
+}
+
+@media (max-width: 600px) {
+  .currency-page {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .search-bar {
+    flex-direction: column; 
+    padding: 5px;
+  }
+
+  .currency-list {
+    grid-template-columns: 1fr; 
+  }
+
+  .back-button,
+  .done-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

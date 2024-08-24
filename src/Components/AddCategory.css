@@ -36,6 +36,49 @@
   color: #f9d6c7;
 }
 
+.selected-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.selected-category-btn {
+  background-color: #c44b24;
+  border: 2px solid #ffdcc5;
+  border-radius: 15px;
+  color: #ffdcc5;
+  padding: 5px 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px; 
+  cursor: pointer;
+  width: 200px;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.selected-category-btn .icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-category-btn .delete-icon {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .categories {
   display: flex;
   flex-wrap: wrap;
@@ -44,27 +87,27 @@
 }
 
 .category-btn {
-  background-color: #f56c3e;
+  background-color: #c44b24;
   border: 2px solid #ffdcc5;
-  border-radius: 15px; 
+  border-radius: 15px;
   color: #ffdcc5;
-  padding: 5px 8px;
-  font-size: 18px; 
+  padding: 5px 10px;
+  font-size: 18px;
   display: flex;
   align-items: center;
-  gap: 5px; 
+  justify-content: center;
+  gap: 8px; 
   cursor: pointer;
-  width: 160px; 
-  height: 70px; 
+  width: 160px;
+  height: 70px;
   box-sizing: border-box;
 }
 
 .category-btn .icon {
-  display: inline-flex;
+  font-size: 24px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px; 
-  line-height: 1;
 }
 
 .footer {
@@ -81,11 +124,10 @@
   font-size: 14px;
   cursor: pointer;
   flex: 1;
- margin-left: 50px;
- margin-right: 70px;
- margin-bottom: 40px;
+  margin-left: 50px;
+  margin-right: 70px;
+  margin-bottom: 40px;
   text-align: center;
   max-width: 120px;
-  height: 50px; 
-
+  height: 50px;
 }

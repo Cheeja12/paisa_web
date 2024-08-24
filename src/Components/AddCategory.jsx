@@ -1,32 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaBaby, FaTshirt, FaUtensils, FaGraduationCap, FaGamepad, FaGift, FaShoppingCart, FaStethoscope, FaPaw, FaCreditCard, FaCar, FaPlane, FaTrash } from 'react-icons/fa';
 import './AddCategory.css';
 import shapesImg from '../assets/addcategory.png'; 
 
 const categories = [
-  { name: 'Childcare', icon: '🧒' },
-  { name: 'Clothing', icon: '👗' },
-  { name: 'Dining', icon: '🍽️' },
-  { name: 'Education', icon: '🎓' },
-  { name: 'Entertainment', icon: '🎮' },
-  { name: 'Gifts', icon: '🎁' },
-  { name: 'Groceries', icon: '🛒' },
-  { name: 'Health & Medical', icon: '🩺' },
-  { name: 'Pet Care', icon: '🐾' },
-  { name: 'Subscription', icon: '💳' },
-  { name: 'Transportation', icon: '🚗' },
-  { name: 'Travel', icon: '✈️' },
+  { name: 'Childcare', icon: <FaBaby /> },
+  { name: 'Clothing', icon: <FaTshirt /> },
+  { name: 'Dining', icon: <FaUtensils /> },
+  { name: 'Education', icon: <FaGraduationCap /> },
+  { name: 'Entertainment', icon: <FaGamepad /> },
+  { name: 'Gifts', icon: <FaGift /> },
+  { name: 'Groceries', icon: <FaShoppingCart /> },
+  { name: 'Health & Medical', icon: <FaStethoscope /> },
+  { name: 'Pet Care', icon: <FaPaw /> },
+  { name: 'Subscription', icon: <FaCreditCard /> },
+  { name: 'Transportation', icon: <FaCar /> },
+  { name: 'Travel', icon: <FaPlane /> },
 ];
 
 const AddCategory = () => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate('/next-page'); 
+    navigate('/Currency'); 
   };
 
   const handleBack = () => {
     navigate('/AddAccount'); 
+  };
+
+  const handleCategorySelect = (category) => {
+    if (!selectedCategories.some((cat) => cat.name === category.name)) {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
+
+  const handleCategoryDelete = (categoryToRemove) => {
+    setSelectedCategories(
+      selectedCategories.filter((category) => category.name !== categoryToRemove.name)
+    );
   };
 
   return (
@@ -40,12 +54,31 @@ const AddCategory = () => {
 
       <div className="recommended-section">
         <h2>Recommended categories</h2>
-        <div className="categories">
-          {categories.map((category) => (
-            <button key={category.name} className="category-btn">
+        
+        <div className="selected-categories">
+          {selectedCategories.map((category) => (
+            <div key={category.name} className="selected-category-btn">
               <span className="icon">{category.icon}</span>
-              {category.name}
-            </button>
+              <span>{category.name}</span>
+              <button onClick={() => handleCategoryDelete(category)} className="delete-icon">
+                <FaTrash />
+              </button>
+            </div>
+          ))}
+        </div>
+        
+        <div className="categories">
+          {categories
+            .filter((category) => !selectedCategories.some((cat) => cat.name === category.name))
+            .map((category) => (
+              <button 
+                key={category.name} 
+                className="category-btn" 
+                onClick={() => handleCategorySelect(category)}
+              >
+                <span className="icon">{category.icon}</span>
+                {category.name}
+              </button>
           ))}
         </div>
       </div>
