@@ -1,23 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { AiOutlineGlobal } from 'react-icons/ai';
+import * as XLSX from 'xlsx';
 import './Currency.css';
-
-const currencies = [
-  { name: 'Afghanistan Afghani', code: 'AFN', symbol: '؋' },
-  { name: 'Albanian Lek', code: 'ALL', symbol: 'Lek' },
-  { name: 'Algerian Dinar', code: 'DZD', symbol: 'دج' },
-  { name: 'Argentine Peso', code: 'ARS', symbol: '$' },
-  { name: 'Armenian Dram', code: 'AMD', symbol: '֏' },
-  { name: 'Australian Dollar', code: 'AUD', symbol: '$' },
-
-];
 
 const Currency = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCurrency, setSelectedCurrency] = useState(null);
+  const [currencies, setCurrencies] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch('/currency.xlsx')
+      .then(response => response.arrayBuffer())
+      .then(data => {
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        const parsedCurrencies = jsonData.slice(1).map(row => ({
+          name: row[0],
+          code: row[1],
+          symbol: row[2],
+        }));
+
+        setCurrencies(parsedCurrencies);
+      });
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
