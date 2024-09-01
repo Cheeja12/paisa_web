@@ -12,6 +12,7 @@ import AddCategory from './Components/AddCategory';
 import Currency from './Components/Currency';
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>

@@ -44,7 +44,11 @@ const Currency = () => {
   };
 
   const handleDoneClick = () => {
-    navigate('/Add'); 
+    if (selectedCurrency) {
+      navigate('/MainPage');
+    } else {
+      alert('Please select a currency before proceeding.');
+    }
   };
 
   const handleBackClick = () => {
@@ -87,7 +91,11 @@ const Currency = () => {
         <button className="back-button" onClick={handleBackClick}>
           <span className="arrow">←</span> Back
         </button>
-        <button className="done-button" onClick={handleDoneClick}>
+        <button 
+          className="done-button" 
+          onClick={handleDoneClick} 
+          disabled={!selectedCurrency}
+        >
           Done <span className="arrow">→</span>
         </button>
       </div>

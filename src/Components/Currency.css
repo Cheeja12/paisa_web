@@ -143,3 +143,8 @@
     font-size: 14px;
   }
 }
+.done-button:disabled {
+  background-color: #a5a5a5;
+  cursor: not-allowed;
+}
+
