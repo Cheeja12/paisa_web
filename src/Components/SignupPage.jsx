@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
 import './SignupPage.css';
-import logo from '../assets/signup.png';
+import logo from '../assets/SignUp.png';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -47,9 +47,7 @@ const SignupPage = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      // Simulate a successful signup
       alert('Signup successful!');
-      // Navigate to the login page
       navigate('/login');
     }
   };
