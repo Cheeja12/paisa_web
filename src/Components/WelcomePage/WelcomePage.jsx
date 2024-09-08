@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WelcomePage.css';
-import logo from '../assets/WelcomePage.png'; 
+import logo from '../../assets/WelcomPage/WelcomePage.png'; 
 
 const WelcomePage = () => {
   const navigate = useNavigate();

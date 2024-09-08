@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-import WelcomePage from './Components/WelcomePage';
-import HomePage from './Components/HomePage';
-import SignupPage from './Components/SignupPage';
-import LoginPage from './Components/LoginPage';
-import AddAccount from './Components/AddAccount';
-import AddAccountDetails from './Components/AddAccountDetails';
-import AddCategory from './Components/AddCategory';
-import Currency from './Components/Currency';
+import WelcomePage from './Components/WelcomePage/WelcomePage';
+import HomePage from './Components/HomePage/HomePage';
+import SignupPage from './Components/SignupPage/SignupPage';
+import LoginPage from './Components/LoginPage/LoginPage';
+import AddAccount from './Components/AddAccount/AddAccount';
+import AddAccountDetails from './Components/AddAccountDetail/AddAccountDetails';
+import AddCategory from './Components/AddCategory/AddCategory';
+import Currency from './Components/CurrencyPage/Currency';
 
 
 

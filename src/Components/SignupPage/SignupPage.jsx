@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
 import './SignupPage.css';
-import logo from '../assets/SignUp.png';
+import logo from '../../assets/Signup/SignUp.png';
 
 const SignupPage = () => {
   const [name, setName] = useState('');

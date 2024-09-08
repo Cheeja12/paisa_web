@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBaby, FaTshirt, FaUtensils, FaGraduationCap, FaGamepad, FaGift, FaShoppingCart, FaStethoscope, FaPaw, FaCreditCard, FaCar, FaPlane, FaTrash } from 'react-icons/fa';
 import './AddCategory.css';
-import shapesImg from '../assets/AddCategory.png'; 
+import shapesImg from '../../assets/AddCategory/AddCategory.png'; 
 
 const categories = [
   { name: 'Childcare', icon: <FaBaby /> },
