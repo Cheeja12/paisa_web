@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './AddAccount.css';
-import icon from '../../assets/AddAccount/AddAccount.png';
+import icon from '../../assets/Images/AddAccount/AddAccount.png';
 
 const initialAccountOptions = [
   { id: 'cash', name: 'Cash', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/cash.png' },
