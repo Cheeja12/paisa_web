@@ -1,8 +1,17 @@
-# React + Vite
+1. SETTING UP ENVIRONMENT
+- Install Node.js from https://nodejs.org/en/download/package-manager of version v20.15.1(LTS) or latest LTS version.
+- Open Visual Studio and open terminal of the editor.
+- Navigate your project directory cd Paisa_web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. Install Dependencies: pnpm install
 
-Currently, two official plugins are available:
+3. Make sure following packages are installed
+- pnpm install react react-dom (for react and react-dom)
+- pnpm install react-router-dom (for react router dom)
+- pnpm install @mui/material @emotion/react @emotion/styled (for material UI)
+- pnpm install @mui/icons-material (for icons)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4. Run Development Server: pnpm dev 
+
+
+
