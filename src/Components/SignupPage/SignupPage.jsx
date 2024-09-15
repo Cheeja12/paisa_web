@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
-import './SignupPage.css';
+import { TextField, Button, Checkbox, FormControlLabel, Box, Typography } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google';
 import logo from '../../assets/Images/Signup/SignUp.png';
 
 const SignupPage = () => {
@@ -53,71 +54,114 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-content">
-        <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
-        </div>
-        <div className="form-container">
-          <h2>Hi, Welcome to <span>Paisa</span></h2>
-          <p>What should we call you?</p>
-          <input
-            type="text"
-            className="form-control my-3"
+    <Box 
+      className="signup-container" 
+      display="flex" 
+      justifyContent="center" 
+      alignItems="center" 
+      minHeight="100vh" 
+      width="100vw"
+      sx={{ background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', overflowY: 'auto' }}
+    >
+      <Box className="signup-content" 
+        display="flex"
+        alignItems="center"
+        p={4}
+        maxWidth={600}
+        sx={{ background: 'linear-gradient(135deg, #FF9E2C 10%, #FF6600 90%)', borderRadius: '10px', boxShadow: 3 }}
+      >
+        <Box className="logo-container" flex={1} display="flex" justifyContent="center" alignItems="center">
+          <img src={logo} alt="Logo" className="logo" style={{ width: '100px', height: '90px' }} />
+        </Box>
+        <Box className="form-container" flex={2} textAlign="left" maxWidth={400}>
+          <Typography variant="h4" gutterBottom>
+            Hi, Welcome to <span style={{ color: '#ae330a' }}>Paisa</span>
+          </Typography>
+          <Typography variant="body1" gutterBottom>What should we call you?</Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
             placeholder="Name"
             value={name}
             onChange={handleNameChange}
+            error={!!errors.name}
+            helperText={errors.name}
+            margin="normal"
           />
-          {errors.name && <p className="error">{errors.name}</p>}
-          <div className={showFields ? 'visible' : 'hidden'}>
-            <p>Email address:</p>
-            <input
-              type="email"
-              className="form-control my-3"
-              placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
-            <p>Password:</p>
-            <input
-              type={showPassword ? "text" : "password"} 
-              className="form-control my-3"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errors.password && <p className="error">{errors.password}</p>}
-            <div className="show-password-container">
-              <input
-                type="checkbox"
-                id="show-password"
-                checked={showPassword}
-                onChange={() => setShowPassword(!showPassword)}
+          
+          {showFields && (
+            <>
+              <Typography variant="body1" gutterBottom>Email address:</Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={!!errors.email}
+                helperText={errors.email}
+                margin="normal"
               />
-              <label htmlFor="show-password">Show Password</label>
-            </div>
-          </div>
-          <div className="button-container">
-            <button className="btn signup-btn" onClick={handleSubmit}>Next<span className="arrow">→</span> </button>
-            <span className="or-text">or</span>
-            <button className="btn google-btn">
-              <img
-                src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-                alt="Google Icon"
-                className="google-icon"
+
+              <Typography variant="body1" gutterBottom>Password:</Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={!!errors.password}
+                helperText={errors.password}
+                margin="normal"
               />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={showPassword}
+                    onChange={() => setShowPassword(!showPassword)}
+                    color="primary"
+                  />
+                }
+                label="Show Password"
+              />
+            </>
+          )}
+
+          <Box mt={3} textAlign="center">
+          <Button 
+           variant="contained" 
+           onClick={handleSubmit} 
+          endIcon={<span style={{ fontSize: '16px' }}>→</span>}
+          sx={{
+          backgroundColor: '#c44b24', 
+           '&:hover': {
+           backgroundColor: '#ae330a', 
+    }
+  }}
+>
+  Sign Up
+</Button>
+
+            <Typography variant="body2" color="textSecondary" mt={2}>
+              or
+            </Typography>
+            <Button 
+              variant="outlined" 
+              startIcon={<GoogleIcon />} 
+              sx={{ mt: 1 }}
+            >
               Sign up with Google
-            </button>
-          </div>
-          <div className="terms">
-            <p>
-              By signing up, you accept the <Link to="/terms">Terms and conditions.</Link> 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Button>
+          </Box>
+          <Box mt={2} textAlign="center">
+            <Typography variant="body2">
+              By signing up, you accept the <Link to="/terms" style={{ color: '#007bff', textDecoration: 'none' }}>Terms and conditions.</Link>
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

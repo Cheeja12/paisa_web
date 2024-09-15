@@ -116,14 +116,13 @@ const LoginPage = () => {
           </Link>
         </Typography>
         <Divider sx={{ color: '#fbe2d8', mb: 2 }}>or</Divider>
-        <Button
-          fullWidth
-          variant="outlined"
-          startIcon={<GoogleIcon />}
-          sx={{ mb: 2, color: '#757575', borderColor: '#ddd', backgroundColor: '#fff' }}
-        >
-          Sign in with Google
-        </Button>
+        <Button 
+              variant="outlined" 
+              startIcon={<GoogleIcon />} 
+              sx={{ mt: 1 }}
+            >
+              Sign up with Google
+            </Button>
       </Box>
     </Container>
   );
