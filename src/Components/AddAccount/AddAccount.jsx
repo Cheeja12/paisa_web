@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './AddAccount.css';
+import { Box, Typography, Button, IconButton, Card, CardMedia } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import icon from '../../assets/Images/AddAccount/AddAccount.png';
 
 const initialAccountOptions = [
@@ -41,54 +43,180 @@ const AddAccount = () => {
   }, [location.state]);
 
   return (
-    <div className="container">
-      <header className="header">
-        <img src={icon} alt="Icon" className="icon" />
-        <h1>Add Account</h1>
-      </header>
-      <section className="account-section">
-        <h2>Recommended accounts</h2>
+    <Box 
+      sx={{ 
+        height: '100vh', 
+        width: '100vw', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'space-between', 
+        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', 
+        color: '#fff', 
+        padding: '20px',
+        overflowX: 'hidden'  
+      }}
+    >
+      <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
+        <CardMedia 
+          component="img" 
+          src={icon} 
+          alt="Icon" 
+          sx={{ 
+            width: 80, 
+            height: 70, 
+            margin: 'auto', 
+            marginBottom: '10px', 
+            marginTop:'50px'
+          }} 
+        />
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          sx={{ fontWeight: 'bold' }}
+        >
+          Add Account
+        </Typography>
+      </Box>
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Typography 
+          variant="h5" 
+          component="h2" 
+          sx={{ 
+            textAlign: 'center', 
+            marginBottom: '20px', 
+            color: '#fbe2d8' 
+          }}
+        >
+          Recommended accounts
+        </Typography>
+
         {selectedAccounts.length > 0 && (
-          <div className="selected-accounts">
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: '10px', 
+              justifyContent: 'center', 
+              marginBottom: '20px' 
+            }}
+          >
             {selectedAccounts.map(account => (
-              <div key={account.id} className="selected-account">
-                <img src={account.icon} alt={account.name} className="button-icon" />
-                {account.name}
-                <img
-                  src="https://img.icons8.com/ios-glyphs/30/ffffff/delete.png"
-                  alt="Delete"
-                  className="delete-icon"
-                  onClick={() => handleRemoveAccount(account)}
+              <Card 
+                key={account.id} 
+                sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  padding: '10px', 
+                  backgroundColor: '#c44b24', 
+                  color: '#fff', 
+                  borderRadius: '8px' 
+                }}
+              >
+                <CardMedia 
+                  component="img" 
+                  src={account.icon} 
+                  alt={account.name} 
+                  sx={{ width: 20, height: 20, marginRight: '8px' }} 
                 />
-              </div>
+                <Typography>{account.name}</Typography>
+                <IconButton 
+                  onClick={() => handleRemoveAccount(account)} 
+                  sx={{ color: '#fff', marginLeft: 'auto' }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Card>
             ))}
-          </div>
+          </Box>
         )}
-        <div className="account-buttons">
+
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: '20px', 
+            justifyContent: 'center' 
+          }}
+        >
           {accountOptions.map(account => (
-            <button
+            <Button
               key={account.id}
-              className={`account-button ${selectedAccounts.includes(account) ? 'selected' : ''}`}
+              variant="contained"
+              sx={{ 
+                backgroundColor: '#c44b24', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px', 
+                padding: '15px', 
+                borderRadius: '8px', 
+                width: '200px' 
+              }}
               onClick={() => handleSelectAccount(account)}
             >
-              <img src={account.icon} alt={account.name} className="button-icon" />
+              <CardMedia 
+                component="img" 
+                src={account.icon} 
+                alt={account.name} 
+                sx={{ width: 20, height: 20 }} 
+              />
               {account.name}
-            </button>
+            </Button>
           ))}
-          <button
-            className="account-button"
+
+          <Button
+            variant="contained"
+            sx={{ 
+              backgroundColor: '#c44b24', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px', 
+              padding: '15px', 
+              borderRadius: '8px',
+              width: '200px' 
+            }}
             onClick={() => navigate('/addaccountdetails')}
           >
-            <img src="https://img.icons8.com/ios-glyphs/30/ffffff/plus.png" alt="Add Account" className="button-icon" />
+            <AddIcon />
             Add Account
-          </button>
-        </div>
-      </section>
-      <footer className="footer">
-        <button className="nav-button" onClick={handleBack}><span className="ADDarrow">←</span>Back</button>
-        <button className="nav-button" onClick={handleNext}>Next<span className="ADDarrow">→</span></button>
-      </footer>
-    </div>
+          </Button>
+        </Box>
+      </Box>
+
+      <Box 
+        sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          marginTop: '20px' 
+        }}
+      >
+        <Button
+          variant="contained"
+          sx={{ 
+            backgroundColor: '#c44b24', 
+            borderRadius: '8px', 
+            padding: '10px 20px', 
+            marginBottom:'50px'
+          }}
+          onClick={handleBack}
+        >
+          ← Back
+        </Button>
+        <Button
+          variant="contained"
+          sx={{ 
+            backgroundColor: '#c44b24', 
+            borderRadius: '8px', 
+            padding: '10px 20px',
+            marginBottom:'50px',
+            marginRight:'37px'
+          }}
+          onClick={handleNext}
+        >
+          Next →
+        </Button>
+      </Box>
+    </Box>
   );
 };
 

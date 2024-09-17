@@ -1,7 +1,7 @@
 1. SETTING UP ENVIRONMENT
 - Install Node.js from https://nodejs.org/en/download/package-manager of version v20.15.1(LTS) or latest LTS version.
 - Open Visual Studio and open terminal of the editor.
-- Navigate your project directory cd Paisa_web
+- Navigate your project directory ex: cd Paisa_web
 
 2. Install Dependencies: pnpm install
 
@@ -12,6 +12,3 @@
 - pnpm install @mui/icons-material (for icons)
 
 4. Run Development Server: pnpm dev 
-
-
-

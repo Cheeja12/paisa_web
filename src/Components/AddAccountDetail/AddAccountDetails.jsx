@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AddAccountDetails.css';
+import { Container, Box, Button, TextField, Switch, FormControlLabel, IconButton } from '@mui/material';
 import { FaPaintBrush } from 'react-icons/fa';
 
 const AddAccountDetails = () => {
@@ -18,11 +18,11 @@ const AddAccountDetails = () => {
     const newAccount = {
       id: accountName.toLowerCase(),
       name: accountName,
-      icon: selectedAccountType === 'cash' 
-        ? 'https://img.icons8.com/ios-glyphs/30/ffffff/cash.png' 
-        : selectedAccountType === 'bank' 
-        ? 'https://img.icons8.com/ios-glyphs/30/ffffff/bank.png' 
-        : 'https://img.icons8.com/ios-glyphs/30/ffffff/wallet.png',
+      icon: selectedAccountType === 'cash'
+        ? 'https://img.icons8.com/ios-glyphs/30/ffffff/cash.png'
+        : selectedAccountType === 'bank'
+          ? 'https://img.icons8.com/ios-glyphs/30/ffffff/bank.png'
+          : 'https://img.icons8.com/ios-glyphs/30/ffffff/wallet.png',
       cardholderName,
       amount,
       color,
@@ -33,77 +33,108 @@ const AddAccountDetails = () => {
   };
 
   return (
-    <div className="container">
-      <form className="account-form" onSubmit={handleFormSubmit}>
-        <div className="account-type-buttons">
-          {['cash', 'bank', 'wallet'].map(type => (
-            <button
+    <Container
+      maxWidth={false}
+      sx={{
+        minHeight: '100vh',
+        width:'100vw',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)',
+        padding: 2,
+      }}
+    >
+      <Box component="form" onSubmit={handleFormSubmit} display="flex" flexDirection="column" gap={2} width="100%" maxWidth="600px">
+
+        <Box display="flex" justifyContent="space-between" width="100%">
+          {['cash', 'bank', 'wallet'].map((type) => (
+            <Button
               key={type}
-              type="button"
-              className={`account-type-button ${selectedAccountType === type ? 'selected' : ''}`}
+              variant={selectedAccountType === type ? 'contained' : 'outlined'}
               onClick={() => setSelectedAccountType(type)}
+              fullWidth
+              sx={{
+                margin: '0 5px',
+                backgroundColor: selectedAccountType === type ? '#c44b24' : 'transparent',
+                color: selectedAccountType === type ? 'white' : 'black',
+                '&:hover': { backgroundColor: selectedAccountType === type ? '#b04020' : '#f0f0f0' },
+              }}
             >
               {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
+            </Button>
           ))}
-        </div>
-        <input
-          type="text"
-          placeholder="Enter cardholder name"
+        </Box>
+
+        <TextField
+          label="Enter cardholder name"
           value={cardholderName}
           onChange={(e) => setCardholderName(e.target.value)}
+          fullWidth
           required
+          sx={{ bgcolor: 'white' }}
         />
-        <input
-          type="text"
-          placeholder="Enter account name"
+        <TextField
+          label="Enter account name"
           value={accountName}
           onChange={(e) => setAccountName(e.target.value)}
+          fullWidth
           required
+          sx={{ bgcolor: 'white' }}
         />
-        <input
-          type="number"
-          placeholder="Enter amount"
+        <TextField
+          label="Enter amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          type="number"
+          fullWidth
           required
+          sx={{ bgcolor: 'white' }}
         />
-        <div className="color-picker">
-          <label>
-            <FaPaintBrush className="color-icon" />
-            Pick color
-          </label>
+
+        <Box display="flex" alignItems="center" gap={2}>
+          <IconButton>
+            <FaPaintBrush />
+          </IconButton>
           <input
             type="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
+            style={{ border: 'none', cursor: 'pointer', width: '40px', height: '40px' }}
             required
           />
-        </div>
-        <p className="color-description">Set color to your category</p>
-        <div className="toggle-buttons">
-          <label className="toggle-container">
-            <span>Default account</span>
-            <input
-              type="checkbox"
-              checked={isDefault}
-              onChange={() => setIsDefault(!isDefault)}
-            />
-            <span className="slider"></span>
-          </label>
-          <label className="toggle-container">
-            <span>Exclude account</span>
-            <input
-              type="checkbox"
-              checked={isExcluded}
-              onChange={() => setIsExcluded(!isExcluded)}
-            />
-            <span className="slider"></span>
-          </label>
-        </div>
-        <button type="submit" className="btn submit-btn">Add</button>
-      </form>
-    </div>
+          <span>Pick color</span>
+        </Box>
+
+        <FormControlLabel
+          control={<Switch checked={isDefault} onChange={() => setIsDefault(!isDefault)} />}
+          label="Default account"
+        />
+        <FormControlLabel
+          control={<Switch checked={isExcluded} onChange={() => setIsExcluded(!isExcluded)} />}
+          label="Exclude account"
+        />
+
+        <Button
+          variant="contained"
+          type="submit"
+          fullWidth
+          sx={{
+            backgroundColor: '#c44b24',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '15px',
+            borderRadius: '8px',
+            width: '200px',
+            alignSelf: 'center',
+            '&:hover': { backgroundColor: '#b04020' },
+          }}
+        >
+          Add Account
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
