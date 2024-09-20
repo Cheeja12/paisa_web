@@ -50,29 +50,28 @@ body, html {
 }
 
 @keyframes move1 {
-  0% { transform: translate(-5, -5) scale(1); }
-  50% { transform: translate(20px, -20px) scale(1.2); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(80px, -80px) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes move2 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20px, 20px) scale(0.8); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-80px, 80px) scale(0.8); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes move3 {
-  0% { transform: translate(5, 5) scale(1); }
-  50% { transform: translate(30px, 40px) scale(1.1); }
-  100% { transform: translate(10, 10) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(100px, 120px) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes move4 {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-30px, -40px) scale(0.9); }
-  100% { transform: translate(-5, -5) scale(1); }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-100px, -120px) scale(0.9); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
-
 
 .content {
   z-index: 1;
@@ -81,7 +80,6 @@ body, html {
 .welcome-page .content .logo {
   width: 600px; 
   height: 200px; 
-
 }
 
 .get-started-button {
@@ -122,6 +120,8 @@ body, html {
     font-size: 16px;
   }
 }
-.welcome-page .content p,h1{
+
+.welcome-page .content h1,
+.welcome-page .content p {
   color: #fbe2d8;
 }

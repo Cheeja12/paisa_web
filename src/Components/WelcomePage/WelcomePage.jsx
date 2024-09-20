@@ -1,7 +1,28 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, Typography, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import logo from '../../assets/Images/WelcomPage/WelcomePage.png';
 import './WelcomePage.css';
-import logo from '../../assets/Images/WelcomPage/WelcomePage.png'; 
+
+const BlobsContainer = styled(Box)({
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  top: 0,
+  left: 0,
+  zIndex: 0,
+});
+
+const Blob = styled('div')(({ size, position }) => ({
+  position: 'absolute',
+  width: size === 'large' ? 300 : size === 'medium' ? 250 : 150,
+  height: size === 'large' ? 300 : size === 'medium' ? 250 : 150,
+  top: position.top,
+  left: position.left,
+  transform: 'translate(-50%, -50%)',
+  transformOrigin: 'center',
+}));
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -9,13 +30,12 @@ const WelcomePage = () => {
   useEffect(() => {
     const blobsContainer = document.querySelector('.blobs');
 
-
     const sizes = ['large', 'medium', 'medium', 'small'];
     const positions = [
       { top: '45%', left: '45%' },
       { top: '45%', left: '55%' },
       { top: '55%', left: '45%' },
-      { top: '55%', left: '55%' }
+      { top: '55%', left: '55%' },
     ];
 
     for (let i = 0; i < 4; i++) {
@@ -23,12 +43,11 @@ const WelcomePage = () => {
       blob.classList.add('blob', sizes[i]);
       blob.innerHTML = `
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%">
-          <path id="blob" d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#f15a2b"></path>
+          <path d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#f15a2b"></path>
         </svg>
       `;
       blob.style.top = positions[i].top;
       blob.style.left = positions[i].left;
-      blob.style.transform = 'translate(-50%, -50%)';
       blob.style.animation = `move${i % 4 + 1} ${Math.random() * 10 + 5}s infinite alternate ease-in-out`;
       blobsContainer.appendChild(blob);
     }
@@ -39,17 +58,50 @@ const WelcomePage = () => {
   };
 
   return (
-    <div className="welcome-page">
-      <div className="blobs"></div>
-      <div className="content">
-        <img src={logo} alt="Logo" className="logo" />
-        <h1>Welcome to Paisa</h1>
-        <p>Your personal finance companion for smarter money management</p>
-        <button className="get-started-button" onClick={handleGetStarted}>
-          <span className="arrow">→</span> Get started
-        </button>
-      </div>
-    </div>
+    <Box
+      className="welcome-page"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        width: '100vw',
+        position: 'relative',
+        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)',
+        textAlign: 'center',
+      }}
+    >
+      <BlobsContainer className="blobs" />
+      <Box className="content" sx={{ zIndex: 1 }}>
+        <img src={logo} alt="Logo" style={{ width: '600px', height: '200px' }} />
+        <Typography variant="h1" sx={{ color: '#fbe2d8', fontSize: { xs: '1.5rem', sm: '2.5rem' } }}>
+          Welcome to Paisa
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#fbe2d8' }}>
+          Your personal finance companion for smarter money management
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{
+            mt: 2,
+            backgroundColor: '#c44b24',
+            color: '#f9d6c7',
+            padding: '15px 30px',
+            borderRadius: '25px',
+            '&:hover': {
+              backgroundColor: '#d18968',
+              color: 'black',
+            },
+            display: 'inline-flex',
+            alignItems: 'center',
+          }}
+          onClick={handleGetStarted}
+        >
+          <span style={{ marginRight: '10px', fontSize: '18px' }}>→</span>
+          Get started
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
