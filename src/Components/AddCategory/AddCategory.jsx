@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBaby, FaTshirt, FaUtensils, FaGraduationCap, FaGamepad, FaGift, FaShoppingCart, FaStethoscope, FaPaw, FaCreditCard, FaCar, FaPlane, FaTrash } from 'react-icons/fa';
-import './AddCategory.css';
+import { Box, Typography, Button, IconButton } from '@mui/material';
 import shapesImg from '../../assets/Images/AddCategory/AddCategory.png'; 
 
 const categories = [
@@ -44,50 +44,121 @@ const AddCategory = () => {
   };
 
   return (
-    <div className="add-category-container">
-      <div className="header">
-        <div className="icon-placeholder">
-          <img src={shapesImg} alt="Shapes" className="icon-shapes" />
-        </div>
-        <h1>Add Category</h1>
-      </div>
+    <Box 
+      sx={{
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'space-between', 
+        height: '100vh', 
+        px: 2, 
+        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', // Fix for background color
+        color: '#f9d6c7',
+        overflowY: 'auto'
+      }}
+    >
+      <Box textAlign="center" mb={2}>
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
+          <img src={shapesImg} alt="Shapes" width="120px" height="auto" />
+        </Box>
+        <Typography variant="h4" color="#f9d6c7">Add Category</Typography>
+      </Box>
 
-      <div className="recommended-section">
-        <h2>Recommended categories</h2>
-        
-        <div className="selected-categories">
+      <Box>
+        <Typography variant="h5" color="#f9d6c7" textAlign="center" mb={2}>
+          Recommended Categories
+        </Typography>
+
+        <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center" mb={2}>
           {selectedCategories.map((category) => (
-            <div key={category.name} className="selected-category-btn">
-              <span className="icon">{category.icon}</span>
-              <span>{category.name}</span>
-              <button onClick={() => handleCategoryDelete(category)} className="delete-icon">
+            <Box 
+              key={category.name} 
+              display="flex" 
+              alignItems="center" 
+              justifyContent="space-between" 
+              bgcolor="#c44b24" 
+              borderRadius="15px" 
+              px={2} 
+              py={1} 
+              color="#ffdcc5"
+              width="200px" 
+              height="80px"
+            >
+              <Box display="flex" alignItems="center">
+                <Box fontSize="24px">{category.icon}</Box>
+                <Typography>{category.name}</Typography>
+              </Box>
+              <IconButton onClick={() => handleCategoryDelete(category)} sx={{ color: '#fff' }}>
                 <FaTrash />
-              </button>
-            </div>
+              </IconButton>
+            </Box>
           ))}
-        </div>
-        
-        <div className="categories">
+        </Box>
+
+        <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center">
           {categories
             .filter((category) => !selectedCategories.some((cat) => cat.name === category.name))
             .map((category) => (
-              <button 
-                key={category.name} 
-                className="category-btn" 
-                onClick={() => handleCategorySelect(category)}
-              >
-                <span className="icon">{category.icon}</span>
-                {category.name}
-              </button>
-          ))}
-        </div>
-      </div>
+              <Button
+  key={category.name}
+  variant="contained"
+  onClick={() => handleCategorySelect(category)}
+  sx={{
+    bgcolor: '#c44b24', 
+    color: '#ffdcc5',
+    borderRadius: '15px', 
+    width: '190px', 
+    height: '70px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap:0.2, 
+    fontSize: '18px',
+    '&:hover': {
+      bgcolor: '#d65a30',
+    },
+  }}
+>
+  <Box fontSize="24px" display="flex" alignItems="center" gap={1}>
+    {category.icon}
+  </Box>
+  <Typography sx={{ ml: 1 }}>{category.name}</Typography> 
+</Button>
 
-      <div className="footer">
-        <button className="footer-btn back-btn" onClick={handleBack}>← Back</button>
-        <button className="footer-btn next-btn" onClick={handleNext}>Next →</button>
-      </div>
-    </div>
+            ))}
+        </Box>
+      </Box>
+
+      <Box display="flex" justifyContent="space-between" pt={2}>
+        <Button 
+          variant="contained" 
+          onClick={handleBack} 
+          sx={{ 
+            bgcolor: '#c44b24', 
+            color: '#fff', 
+            borderRadius: '20px', 
+            height: '50px',
+            maxWidth: '120px',
+            ml: 4
+          }}
+        >
+          ← Back
+        </Button>
+        <Button 
+          variant="contained" 
+          onClick={handleNext} 
+          sx={{ 
+            bgcolor: '#c44b24', 
+            color: '#fff', 
+            borderRadius: '20px', 
+            height: '50px', 
+            maxWidth: '120px', 
+            mr: 4
+          }}
+        >
+          Next →
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
