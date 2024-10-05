@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; 
 import { TextField, Button, Checkbox, FormControlLabel, Box, Typography } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import logo from '../../assets/Images/Signup/SignUp.png';
+import { auth } from '../Firebase/Firebase';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -17,11 +18,7 @@ const SignupPage = () => {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-    if (e.target.value.trim() !== '') {
-      setShowFields(true);
-    } else {
-      setShowFields(false);
-    }
+    setShowFields(e.target.value.trim() !== '');
   };
 
   const validate = () => {
@@ -42,14 +39,34 @@ const SignupPage = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert('Signup successful!');
+        navigate('/login');
+      } catch (error) {
+        console.error('Signup Error:', error.message);
+        alert(error.message);
+      }
+    }
+  };
+
+  const handleGoogleSignUp = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('Google Sign-Up Success:', user);
       alert('Signup successful!');
       navigate('/login');
+    } catch (error) {
+      console.error('Google Sign-Up Error:', error.message);
+      alert(error.message);
     }
   };
 
@@ -129,19 +146,19 @@ const SignupPage = () => {
           )}
 
           <Box mt={3} textAlign="center">
-          <Button 
-           variant="contained" 
-           onClick={handleSubmit} 
-          endIcon={<span style={{ fontSize: '16px' }}>→</span>}
-          sx={{
-          backgroundColor: '#c44b24', 
-           '&:hover': {
-           backgroundColor: '#ae330a', 
-    }
-  }}
->
-  Sign Up
-</Button>
+            <Button 
+              variant="contained" 
+              onClick={handleSubmit} 
+              endIcon={<span style={{ fontSize: '16px' }}>→</span>}
+              sx={{
+                backgroundColor: '#c44b24', 
+                '&:hover': {
+                  backgroundColor: '#ae330a', 
+                }
+              }}
+            >
+              Sign Up
+            </Button>
 
             <Typography variant="body2" color="textSecondary" mt={2}>
               or
@@ -149,6 +166,7 @@ const SignupPage = () => {
             <Button 
               variant="outlined" 
               startIcon={<GoogleIcon />} 
+              onClick={handleGoogleSignUp}
               sx={{ mt: 1 }}
             >
               Sign up with Google

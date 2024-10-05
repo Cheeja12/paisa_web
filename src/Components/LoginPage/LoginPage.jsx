@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, Checkbox, FormControlLabel, Container, Typography, Box, Divider } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
+import { auth } from '../Firebase/Firebase';  // Adjust the import path based on your Firebase.js location
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -36,8 +38,23 @@ const LoginPage = () => {
       console.log('Form submitted:', { email, password });
 
       setTimeout(() => {
-        navigate('/AddAccount'); 
+        navigate('/AddAccount');
       }, 2000); 
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('Google Sign-In Success:', user);
+      setSuccess(true);
+      setTimeout(() => {
+        navigate('/AddAccount');
+      }, 2000);
+    } catch (error) {
+      console.error('Google Sign-In Error:', error.message);
     }
   };
 
@@ -116,13 +133,14 @@ const LoginPage = () => {
           </Link>
         </Typography>
         <Divider sx={{ color: '#fbe2d8', mb: 2 }}>or</Divider>
-        <Button 
-              variant="outlined" 
-              startIcon={<GoogleIcon />} 
-              sx={{ mt: 1 }}
-            >
-              Sign up with Google
-            </Button>
+        <Button
+          variant="outlined"
+          startIcon={<GoogleIcon />}
+          onClick={handleGoogleSignIn}
+          sx={{ mt: 1 }}
+        >
+          Sign in with Google
+        </Button>
       </Box>
     </Container>
   );

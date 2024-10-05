@@ -10,5 +10,6 @@
 - pnpm install react-router-dom (for react router dom)
 - pnpm install @mui/material @emotion/react @emotion/styled (for material UI)
 - pnpm install @mui/icons-material (for icons)
+- pnpm install firebase
 
 4. Run Development Server: pnpm dev 
