@@ -59,7 +59,7 @@ const Currency = () => {
     <div className="currency-page">
       <div className="header">
         <AiOutlineGlobal className="icon-global" />
-        <h1 className="title">Select currency</h1>
+        <h1 className="title">Select Currency</h1>
         <div className="search-bar">
           <FiSearch className="search-icon" />
           <input 

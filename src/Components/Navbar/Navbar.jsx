@@ -9,21 +9,21 @@ import logo from '../../assets/Images/Navbar/NavLogo.png';
 import { styled } from '@mui/material/styles';
 
 const LogoImg = styled('img')({
-  height: '150px', 
-  width: '450px',  
-  marginLeft: '-120px',  
+  height: '150px',
+  width: '450px',
+  marginLeft: '-120px',
 });
 
 const Navbar = () => {
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: 'white', borderBottom: '1px solid #ddd', width: '100%' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: '#fffde7', borderBottom: '1px solid #ddd', width: '100%' }}>
       <Toolbar sx={{ justifyContent: 'space-between', height: '80px', pr: '700px' }}>
         <Box display="flex" alignItems="center" className="logo">
           <LogoImg src={logo} alt="Logo" className="logo-img" />
           <Typography
             variant="h6"
             component="span"
-            sx={{ fontWeight: 'bold', color: '#bf360c', fontSize: '30px', ml: '-170px' }} 
+            sx={{ fontWeight: 'bold', color: '#0070a9', fontSize: '30px', ml: '-170px' }}
           >
             Paisa
           </Typography>
@@ -35,7 +35,7 @@ const Navbar = () => {
             sx={{
               marginRight: '20px',
               textDecoration: 'none',
-              color: '#bf360c',
+              color: '#0070a9',
               fontSize: '20px',
             }}
           >
@@ -46,14 +46,14 @@ const Navbar = () => {
             to="/signup"
             variant="contained"
             sx={{
-              backgroundColor: '#bf360c',
+              backgroundColor: '#0070a9',
               padding: '10px 20px',
               marginRight: '70px',
               borderRadius: '5px',
               color: 'white',
               fontSize: '20px',
               '&:hover': {
-                backgroundColor: 'rgb(112, 70, 70)',
+                backgroundColor: '#005f8d',
               },
             }}
           >

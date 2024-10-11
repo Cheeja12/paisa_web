@@ -5,8 +5,8 @@
   width: 100vw;
   padding: 20px;
   box-sizing: border-box;
-  background: linear-gradient(180deg, #FF7E3D, #FF9F81);
-  color: #f9d6c7;
+  background: linear-gradient(180deg, #fffde7, #0070a9); 
+  color: #0070a9; 
 }
 
 .header {
@@ -18,7 +18,7 @@
 
 .icon-global {
   font-size: 60px;
-  color: #c44b24;
+  color: #001540; 
   margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: #4B3A3A;
+  background-color: #fffde7; 
   border-radius: 10px;
   padding: 10px;
   width: 100%;
@@ -41,7 +41,7 @@
 
 .search-icon {
   font-size: 20px;
-  color: #f9d6c7;
+  color: #0070a9; 
   margin-right: 10px;
 }
 
@@ -50,7 +50,7 @@
   background: none;
   border: none;
   outline: none;
-  color: #f9d6c7;
+  color: #0070a9; 
   font-size: 18px;
 }
 
@@ -64,19 +64,20 @@
 }
 
 .currency-item {
-  background-color: #4B3A3A;
+  background-color: #fffde7; 
   border-radius: 15px;
   padding: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #f9d6c7;
+  color: #0070a9; 
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .currency-item.selected {
-  background-color: #c44b24; 
+  background-color: #0070a9; 
+  color: #fffde7; 
 }
 
 .currency-item p {
@@ -97,8 +98,8 @@
 
 .back-button,
 .done-button {
-  background-color: #c44b24;
-  color: #f9d6c7;
+  background-color: #0070a9; 
+  color: #fffde7; 
   border: none;
   padding: 15px 30px;
   font-size: 16px;
@@ -116,7 +117,7 @@
 
 .back-button:hover,
 .done-button:hover {
-  background-color: #8B4513;
+  background-color: #005a8d; 
 }
 
 @media (max-width: 600px) {
@@ -143,8 +144,8 @@
     font-size: 14px;
   }
 }
+
 .done-button:disabled {
   background-color: #a5a5a5;
   cursor: not-allowed;
 }
-

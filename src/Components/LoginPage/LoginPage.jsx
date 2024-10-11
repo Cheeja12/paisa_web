@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField, Button, Checkbox, FormControlLabel, Container, Typography, Box, Divider } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
-import { auth } from '../Firebase/Firebase';  // Adjust the import path based on your Firebase.js location
+import { auth } from '../Firebase/Firebase';  
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const LoginPage = () => {
@@ -67,13 +67,13 @@ const LoginPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)',
+        backgroundColor: '#fffde7',
       }}
     >
       <Box
         sx={{
           padding: 4,
-          background: 'linear-gradient(135deg, #FF9E2C 10%, #FF6600 90%)',
+          backgroundColor: 'white',
           borderRadius: 2,
           boxShadow: 3,
           textAlign: 'center',
@@ -81,7 +81,7 @@ const LoginPage = () => {
           maxWidth: 400, 
         }}
       >
-        <Typography variant="h4" gutterBottom color="#fbe2d8">
+        <Typography variant="h4" gutterBottom color="#0070a9">
           Log in
         </Typography>
         {success && (
@@ -115,29 +115,29 @@ const LoginPage = () => {
           <FormControlLabel
             control={<Checkbox checked={showPassword} onChange={() => setShowPassword(!showPassword)} />}
             label="Show Password"
-            sx={{ color: '#fbe2d8' }}
+            sx={{ color: '#0070a9' }}
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ mt: 2, backgroundColor: '#c44b24' }}
+            sx={{ mt: 2, backgroundColor: '#0070a9' }}
           >
             Log in
           </Button>
         </form>
         <Typography sx={{ mt: 2, mb: 2 }}>
-          <Link to="/forgot-password" style={{ color: '#fbe2d8' }}>
+          <Link to="/forgot-password" style={{ color: '#0070a9' }}>
             Forgot your password?
           </Link>
         </Typography>
-        <Divider sx={{ color: '#fbe2d8', mb: 2 }}>or</Divider>
+        <Divider sx={{ color: '#0070a9', mb: 2 }}>or</Divider>
         <Button
           variant="outlined"
           startIcon={<GoogleIcon />}
           onClick={handleGoogleSignIn}
-          sx={{ mt: 1 }}
+          sx={{ mt: 1, borderColor: '#0070a9', color: '#0070a9' }}
         >
           Sign in with Google
         </Button>

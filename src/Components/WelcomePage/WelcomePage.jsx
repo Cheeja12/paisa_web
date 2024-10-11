@@ -14,22 +14,11 @@ const BlobsContainer = styled(Box)({
   zIndex: 0,
 });
 
-const Blob = styled('div')(({ size, position }) => ({
-  position: 'absolute',
-  width: size === 'large' ? 300 : size === 'medium' ? 250 : 150,
-  height: size === 'large' ? 300 : size === 'medium' ? 250 : 150,
-  top: position.top,
-  left: position.left,
-  transform: 'translate(-50%, -50%)',
-  transformOrigin: 'center',
-}));
-
 const WelcomePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const blobsContainer = document.querySelector('.blobs');
-
     const sizes = ['large', 'medium', 'medium', 'small'];
     const positions = [
       { top: '45%', left: '45%' },
@@ -43,7 +32,7 @@ const WelcomePage = () => {
       blob.classList.add('blob', sizes[i]);
       blob.innerHTML = `
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%">
-          <path d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#f15a2b"></path>
+          <path d="M381,326Q338,402,234.5,429Q131,456,67,353Q3,250,67.5,147.5Q132,45,227.5,84.5Q323,124,373.5,187Q424,250,381,326Z" fill="#0070a9"></path>
         </svg>
       `;
       blob.style.top = positions[i].top;
@@ -67,29 +56,29 @@ const WelcomePage = () => {
         height: '100vh',
         width: '100vw',
         position: 'relative',
-        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)',
+        background: '#fffde7', 
         textAlign: 'center',
       }}
     >
       <BlobsContainer className="blobs" />
       <Box className="content" sx={{ zIndex: 1 }}>
         <img src={logo} alt="Logo" style={{ width: '600px', height: '200px' }} />
-        <Typography variant="h1" sx={{ color: '#fbe2d8', fontSize: { xs: '1.5rem', sm: '2.5rem' } }}>
-          Welcome to Paisa
-        </Typography>
-        <Typography variant="body1" sx={{ color: '#fbe2d8' }}>
+        <Typography variant="h1" sx={{ color:  '#001540 !important', fontSize: { xs: '1.5rem', sm: '2.5rem' } }}>
+  Welcome to Paisa
+</Typography>
+        <Typography variant="body1" sx={{ color: '#001540 !important' }}>
           Your personal finance companion for smarter money management
         </Typography>
         <Button
           variant="contained"
           sx={{
             mt: 2,
-            backgroundColor: '#c44b24',
-            color: '#f9d6c7',
+            backgroundColor: '#0070a9', 
+            color: '#fffde7',
             padding: '15px 30px',
             borderRadius: '25px',
             '&:hover': {
-              backgroundColor: '#d18968',
+              backgroundColor: '#0070a9',
               color: 'black',
             },
             display: 'inline-flex',

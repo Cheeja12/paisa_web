@@ -13,8 +13,8 @@ const SignupPage = () => {
   const [showFields, setShowFields] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -78,21 +78,50 @@ const SignupPage = () => {
       alignItems="center" 
       minHeight="100vh" 
       width="100vw"
-      sx={{ background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', overflowY: 'auto' }}
+      sx={{ backgroundColor: '#fffde7', overflowY: 'auto', p: 2 }} 
     >
       <Box className="signup-content" 
         display="flex"
+        flexWrap="wrap" 
         alignItems="center"
+        justifyContent="center" 
         p={4}
-        maxWidth={600}
-        sx={{ background: 'linear-gradient(135deg, #FF9E2C 10%, #FF6600 90%)', borderRadius: '10px', boxShadow: 3 }}
+        maxWidth="100%" 
+        sx={{ 
+          backgroundColor: '#fff', 
+          borderRadius: '10px', 
+          boxShadow: 3, 
+          maxWidth: { xs: '90%', sm: '600px' }, 
+        }}
       >
-        <Box className="logo-container" flex={1} display="flex" justifyContent="center" alignItems="center">
-          <img src={logo} alt="Logo" className="logo" style={{ width: '100px', height: '90px' }} />
+        <Box 
+          className="logo-container" 
+          flex={1} 
+          display="flex" 
+          justifyContent="center" 
+          alignItems="center"
+          mb={{ xs: 3, sm: 0 }} 
+        >
+          <img 
+            src={logo} 
+            alt="Logo" 
+            className="logo" 
+            style={{ width: '170px', height: '190px', maxWidth: '100%' }} 
+          />
         </Box>
-        <Box className="form-container" flex={2} textAlign="left" maxWidth={400}>
+        
+        <Box 
+          className="form-container" 
+          flex={2} 
+          textAlign="left" 
+          maxWidth="100%" 
+          sx={{ 
+            maxWidth: { xs: '100%', sm: '400px' }, 
+            ml: { xs: 0, sm: 3 }, 
+          }}
+        >
           <Typography variant="h4" gutterBottom>
-            Hi, Welcome to <span style={{ color: '#ae330a' }}>Paisa</span>
+            Hi, Welcome to <span style={{ color: '#0070a9' }}>Paisa</span>
           </Typography>
           <Typography variant="body1" gutterBottom>What should we call you?</Typography>
           <TextField
@@ -151,10 +180,11 @@ const SignupPage = () => {
               onClick={handleSubmit} 
               endIcon={<span style={{ fontSize: '16px' }}>→</span>}
               sx={{
-                backgroundColor: '#c44b24', 
+                backgroundColor: '#0070a9', 
                 '&:hover': {
-                  backgroundColor: '#ae330a', 
-                }
+                  backgroundColor: '#005f8d',
+                },
+                width: '100%', 
               }}
             >
               Sign Up
@@ -167,14 +197,14 @@ const SignupPage = () => {
               variant="outlined" 
               startIcon={<GoogleIcon />} 
               onClick={handleGoogleSignUp}
-              sx={{ mt: 1 }}
+              sx={{ mt: 1, color: '#0070a9', borderColor: '#0070a9', '&:hover': { borderColor: '#005f8d' }, width: '100%' }}
             >
               Sign up with Google
             </Button>
           </Box>
           <Box mt={2} textAlign="center">
             <Typography variant="body2">
-              By signing up, you accept the <Link to="/terms" style={{ color: '#007bff', textDecoration: 'none' }}>Terms and conditions.</Link>
+              By signing up, you accept the <Link to="/terms" style={{ color: '#0070a9', textDecoration: 'none' }}>Terms and conditions.</Link>
             </Typography>
           </Box>
         </Box>

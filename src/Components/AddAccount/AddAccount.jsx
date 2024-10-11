@@ -50,8 +50,8 @@ const AddAccount = () => {
         display: 'flex', 
         flexDirection: 'column', 
         justifyContent: 'space-between', 
-        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', 
-        color: '#fff', 
+        background: '#fffde7', 
+        color: '#0070a9', 
         padding: '20px',
         overflowX: 'hidden'  
       }}
@@ -85,7 +85,7 @@ const AddAccount = () => {
           sx={{ 
             textAlign: 'center', 
             marginBottom: '20px', 
-            color: '#fbe2d8' 
+            color: '#0070a9'
           }}
         >
           Recommended accounts
@@ -108,7 +108,7 @@ const AddAccount = () => {
                   display: 'flex', 
                   alignItems: 'center', 
                   padding: '10px', 
-                  backgroundColor: '#c44b24', 
+                  backgroundColor: '#0070a9', 
                   color: '#fff', 
                   borderRadius: '8px' 
                 }}
@@ -144,7 +144,7 @@ const AddAccount = () => {
               key={account.id}
               variant="contained"
               sx={{ 
-                backgroundColor: '#c44b24', 
+                backgroundColor: '#0070a9', 
                 display: 'flex', 
                 alignItems: 'center', 
                 gap: '8px', 
@@ -167,7 +167,7 @@ const AddAccount = () => {
           <Button
             variant="contained"
             sx={{ 
-              backgroundColor: '#c44b24', 
+              backgroundColor: '#0070a9', 
               display: 'flex', 
               alignItems: 'center', 
               gap: '8px', 
@@ -193,7 +193,7 @@ const AddAccount = () => {
         <Button
           variant="contained"
           sx={{ 
-            backgroundColor: '#c44b24', 
+            backgroundColor: '#0070a9', 
             borderRadius: '8px', 
             padding: '10px 20px', 
             marginBottom:'50px'
@@ -205,7 +205,7 @@ const AddAccount = () => {
         <Button
           variant="contained"
           sx={{ 
-            backgroundColor: '#c44b24', 
+            backgroundColor: '#0070a9', 
             borderRadius: '8px', 
             padding: '10px 20px',
             marginBottom:'50px',

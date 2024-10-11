@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBaby, FaTshirt, FaUtensils, FaGraduationCap, FaGamepad, FaGift, FaShoppingCart, FaStethoscope, FaPaw, FaCreditCard, FaCar, FaPlane, FaTrash } from 'react-icons/fa';
-import { Box, Typography, Button, IconButton } from '@mui/material';
-import shapesImg from '../../assets/Images/AddCategory/AddCategory.png'; 
+import { Box, Typography, Button, IconButton, Divider } from '@mui/material';
+import shapesImg from '../../assets/Images/AddCategory/AddCategory.png';
 
 const categories = [
   { name: 'Childcare', icon: <FaBaby /> },
@@ -24,11 +24,11 @@ const AddCategory = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate('/Currency'); 
+    navigate('/Currency');
   };
 
   const handleBack = () => {
-    navigate('/AddAccount'); 
+    navigate('/AddAccount');
   };
 
   const handleCategorySelect = (category) => {
@@ -51,8 +51,8 @@ const AddCategory = () => {
         justifyContent: 'space-between', 
         height: '100vh', 
         px: 2, 
-        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)', // Fix for background color
-        color: '#f9d6c7',
+        background: '#fffde7', 
+        color: '#0070a9',
         overflowY: 'auto'
       }}
     >
@@ -60,14 +60,15 @@ const AddCategory = () => {
         <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
           <img src={shapesImg} alt="Shapes" width="120px" height="auto" />
         </Box>
-        <Typography variant="h4" color="#f9d6c7">Add Category</Typography>
+        <Typography variant="h4" color="#0070a9">Add Category</Typography>
       </Box>
 
       <Box>
-        <Typography variant="h5" color="#f9d6c7" textAlign="center" mb={2}>
+        <Typography variant="h5" color="#0070a9" textAlign="center" mb={2}>
           Recommended Categories
         </Typography>
 
+        {/* Selected Categories */}
         <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center" mb={2}>
           {selectedCategories.map((category) => (
             <Box 
@@ -75,11 +76,11 @@ const AddCategory = () => {
               display="flex" 
               alignItems="center" 
               justifyContent="space-between" 
-              bgcolor="#c44b24" 
+              bgcolor="#0070a9" 
               borderRadius="15px" 
               px={2} 
               py={1} 
-              color="#ffdcc5"
+              color="#fff"
               width="200px" 
               height="80px"
             >
@@ -94,36 +95,38 @@ const AddCategory = () => {
           ))}
         </Box>
 
+       
+        <Divider sx={{ backgroundColor: '#0070a9', mb: 2 }} />
+
         <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center">
           {categories
             .filter((category) => !selectedCategories.some((cat) => cat.name === category.name))
             .map((category) => (
               <Button
-  key={category.name}
-  variant="contained"
-  onClick={() => handleCategorySelect(category)}
-  sx={{
-    bgcolor: '#c44b24', 
-    color: '#ffdcc5',
-    borderRadius: '15px', 
-    width: '190px', 
-    height: '70px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap:0.2, 
-    fontSize: '18px',
-    '&:hover': {
-      bgcolor: '#d65a30',
-    },
-  }}
->
-  <Box fontSize="24px" display="flex" alignItems="center" gap={1}>
-    {category.icon}
-  </Box>
-  <Typography sx={{ ml: 1 }}>{category.name}</Typography> 
-</Button>
-
+                key={category.name}
+                variant="contained"
+                onClick={() => handleCategorySelect(category)}
+                sx={{
+                  bgcolor: '#0070a9', 
+                  color: '#fff',
+                  borderRadius: '15px', 
+                  width: '190px', 
+                  height: '70px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 0.2, 
+                  fontSize: '18px',
+                  '&:hover': {
+                    bgcolor: '#005f82',
+                  },
+                }}
+              >
+                <Box fontSize="24px" display="flex" alignItems="center" gap={1}>
+                  {category.icon}
+                </Box>
+                <Typography sx={{ ml: 1 }}>{category.name}</Typography>
+              </Button>
             ))}
         </Box>
       </Box>
@@ -133,7 +136,7 @@ const AddCategory = () => {
           variant="contained" 
           onClick={handleBack} 
           sx={{ 
-            bgcolor: '#c44b24', 
+            bgcolor: '#0070a9', 
             color: '#fff', 
             borderRadius: '20px', 
             height: '50px',
@@ -147,7 +150,7 @@ const AddCategory = () => {
           variant="contained" 
           onClick={handleNext} 
           sx={{ 
-            bgcolor: '#c44b24', 
+            bgcolor: '#0070a9', 
             color: '#fff', 
             borderRadius: '20px', 
             height: '50px', 

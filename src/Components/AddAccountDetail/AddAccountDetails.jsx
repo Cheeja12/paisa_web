@@ -37,11 +37,11 @@ const AddAccountDetails = () => {
       maxWidth={false}
       sx={{
         minHeight: '100vh',
-        width:'100vw',
+        width: '100vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(180deg, #FF7E3D, #FF9F81)',
+        background: '#fffde7', 
         padding: 2,
       }}
     >
@@ -56,9 +56,9 @@ const AddAccountDetails = () => {
               fullWidth
               sx={{
                 margin: '0 5px',
-                backgroundColor: selectedAccountType === type ? '#c44b24' : 'transparent',
-                color: selectedAccountType === type ? 'white' : 'black',
-                '&:hover': { backgroundColor: selectedAccountType === type ? '#b04020' : '#f0f0f0' },
+                backgroundColor: selectedAccountType === type ? '#0070a9' : 'transparent', 
+                color: selectedAccountType === type ? 'white' : '#0070a9', 
+                '&:hover': { backgroundColor: selectedAccountType === type ? '#005f7f' : '#f0f0f0' },
               }}
             >
               {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -72,7 +72,7 @@ const AddAccountDetails = () => {
           onChange={(e) => setCardholderName(e.target.value)}
           fullWidth
           required
-          sx={{ bgcolor: 'white' }}
+          sx={{ bgcolor: 'white' }} 
         />
         <TextField
           label="Enter account name"
@@ -80,7 +80,7 @@ const AddAccountDetails = () => {
           onChange={(e) => setAccountName(e.target.value)}
           fullWidth
           required
-          sx={{ bgcolor: 'white' }}
+          sx={{ bgcolor: 'white' }} 
         />
         <TextField
           label="Enter amount"
@@ -89,7 +89,7 @@ const AddAccountDetails = () => {
           type="number"
           fullWidth
           required
-          sx={{ bgcolor: 'white' }}
+          sx={{ bgcolor: 'white' }} 
         />
 
         <Box display="flex" alignItems="center" gap={2}>
@@ -120,15 +120,14 @@ const AddAccountDetails = () => {
           type="submit"
           fullWidth
           sx={{
-            backgroundColor: '#c44b24',
+            backgroundColor: '#0070a9', 
+            color: 'white',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
             padding: '15px',
             borderRadius: '8px',
-            width: '200px',
-            alignSelf: 'center',
-            '&:hover': { backgroundColor: '#b04020' },
+            '&:hover': { backgroundColor: '#005f7f' }, 
           }}
         >
           Add Account
