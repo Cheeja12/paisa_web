@@ -56,49 +56,61 @@ const AddCategory = () => {
         overflowY: 'auto'
       }}
     >
-      <Box textAlign="center" mb={2}>
-        <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
-          <img src={shapesImg} alt="Shapes" width="120px" height="auto" />
-        </Box>
-        <Typography variant="h4" color="#0070a9">Add Category</Typography>
-      </Box>
+     <Box 
+  display="flex" 
+  flexDirection="column" 
+  justifyContent="center" 
+  alignItems="center" 
+  mb={2} 
+  pt={4} 
+>
+  <img src={shapesImg} alt="Shapes" width="80px" height="auto" />
+  <Typography variant="h4" color="#0070a9" mt={2}>Add Category</Typography> 
+</Box>
+
 
       <Box>
+        {selectedCategories.length > 0 && (
+          <>
+            <Typography variant="h5" color="#0070a9" textAlign="center" mb={2}>
+              Selected Categories
+            </Typography>
+
+            <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center" mb={2}>
+              {selectedCategories.map((category) => (
+                <Box 
+                  key={category.name} 
+                  display="flex" 
+                  alignItems="center" 
+                  justifyContent="space-between" 
+                  bgcolor="#0070a9" 
+                  borderRadius="15px" 
+                  px={2} 
+                  py={0.5} 
+                  color="#fff"
+                  width="160px" 
+                  height="50px" 
+                >
+                  <Box display="flex" alignItems="center">
+                    <Box fontSize="20px">{category.icon}</Box>
+                    <Typography>{category.name}</Typography>
+                  </Box>
+                  <IconButton onClick={() => handleCategoryDelete(category)} sx={{ color: '#fff' }}>
+                    <FaTrash />
+                  </IconButton>
+                </Box>
+              ))}
+            </Box>
+
+            <Divider sx={{ backgroundColor: '#0070a9', mb: 2 }} />
+          </>
+        )}
+
         <Typography variant="h5" color="#0070a9" textAlign="center" mb={2}>
           Recommended Categories
         </Typography>
 
-        {/* Selected Categories */}
         <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center" mb={2}>
-          {selectedCategories.map((category) => (
-            <Box 
-              key={category.name} 
-              display="flex" 
-              alignItems="center" 
-              justifyContent="space-between" 
-              bgcolor="#0070a9" 
-              borderRadius="15px" 
-              px={2} 
-              py={1} 
-              color="#fff"
-              width="200px" 
-              height="80px"
-            >
-              <Box display="flex" alignItems="center">
-                <Box fontSize="24px">{category.icon}</Box>
-                <Typography>{category.name}</Typography>
-              </Box>
-              <IconButton onClick={() => handleCategoryDelete(category)} sx={{ color: '#fff' }}>
-                <FaTrash />
-              </IconButton>
-            </Box>
-          ))}
-        </Box>
-
-       
-        <Divider sx={{ backgroundColor: '#0070a9', mb: 2 }} />
-
-        <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center">
           {categories
             .filter((category) => !selectedCategories.some((cat) => cat.name === category.name))
             .map((category) => (
@@ -110,19 +122,19 @@ const AddCategory = () => {
                   bgcolor: '#0070a9', 
                   color: '#fff',
                   borderRadius: '15px', 
-                  width: '190px', 
-                  height: '70px',
+                  width: '180px', 
+                  height: '60px', 
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   gap: 0.2, 
-                  fontSize: '18px',
+                  fontSize: '16px',
                   '&:hover': {
                     bgcolor: '#005f82',
                   },
                 }}
               >
-                <Box fontSize="24px" display="flex" alignItems="center" gap={1}>
+                <Box fontSize="20px" display="flex" alignItems="center" gap={1}>
                   {category.icon}
                 </Box>
                 <Typography sx={{ ml: 1 }}>{category.name}</Typography>
@@ -131,7 +143,7 @@ const AddCategory = () => {
         </Box>
       </Box>
 
-      <Box display="flex" justifyContent="space-between" pt={2}>
+      <Box display="flex" justifyContent="space-between" pt={2} pb={2}>
         <Button 
           variant="contained" 
           onClick={handleBack} 
