@@ -12,4 +12,5 @@
 - pnpm install @mui/icons-material (for icons)
 - pnpm install firebase
 
+- for firestore intall 
 4. Run Development Server: pnpm dev 
