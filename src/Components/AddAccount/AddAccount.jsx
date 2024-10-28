@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Button, IconButton, Card, CardMedia } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,10 +12,27 @@ const initialAccountOptions = [
 ];
 
 const AddAccount = () => {
-  const location = useLocation();
   const [accountOptions, setAccountOptions] = useState(initialAccountOptions);
   const [selectedAccounts, setSelectedAccounts] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const savedAccounts = localStorage.getItem('selectedAccounts');
+    if (savedAccounts) {
+      setSelectedAccounts(JSON.parse(savedAccounts));
+      setAccountOptions(
+        initialAccountOptions.filter(
+          (option) => !JSON.parse(savedAccounts).some((selected) => selected.id === option.id)
+        )
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedAccounts.length > 0) {
+      localStorage.setItem('selectedAccounts', JSON.stringify(selectedAccounts));
+    }
+  }, [selectedAccounts]);
 
   const handleBack = () => {
     navigate('/login');
@@ -31,16 +48,9 @@ const AddAccount = () => {
   };
 
   const handleRemoveAccount = (account) => {
-    setSelectedAccounts(selectedAccounts.filter(a => a !== account));
-    setAccountOptions([account, ...accountOptions]);
+    setSelectedAccounts(selectedAccounts.filter(a => a.id !== account.id));
+    setAccountOptions([...accountOptions, account]);
   };
-
-  useEffect(() => {
-    if (location.state && location.state.newAccount) {
-      const newAccount = location.state.newAccount;
-      setSelectedAccounts([...selectedAccounts, newAccount]);
-    }
-  }, [location.state]);
 
   return (
     <Box 
@@ -56,23 +66,23 @@ const AddAccount = () => {
         overflowX: 'hidden'  
       }}
     >
-      <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
+      {/* Centered Icon at the top */}
+      <Box sx={{ textAlign: 'center', marginTop: '50px' }}>
         <CardMedia 
           component="img" 
-          src={icon} 
+          src={icon}  // Displaying the imported icon
           alt="Icon" 
           sx={{ 
             width: 80, 
             height: 70, 
             margin: 'auto', 
-            marginBottom: '10px', 
-            marginTop:'50px'
+            marginBottom: '10px' 
           }} 
         />
         <Typography 
           variant="h4" 
           component="h1" 
-          sx={{ fontWeight: 'bold' }}
+          sx={{ fontWeight: 'bold', marginTop: '10px' }}
         >
           Add Account
         </Typography>
@@ -196,7 +206,7 @@ const AddAccount = () => {
             backgroundColor: '#0070a9', 
             borderRadius: '8px', 
             padding: '10px 20px', 
-            marginBottom:'50px'
+            marginBottom: '50px'
           }}
           onClick={handleBack}
         >
@@ -208,8 +218,8 @@ const AddAccount = () => {
             backgroundColor: '#0070a9', 
             borderRadius: '8px', 
             padding: '10px 20px',
-            marginBottom:'50px',
-            marginRight:'37px'
+            marginBottom: '50px',
+            marginRight: '37px'
           }}
           onClick={handleNext}
         >

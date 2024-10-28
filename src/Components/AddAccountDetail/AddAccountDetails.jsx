@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Box, Button, TextField, Switch, FormControlLabel, IconButton } from '@mui/material';
 import { FaPaintBrush } from 'react-icons/fa';
@@ -12,6 +12,21 @@ const AddAccountDetails = () => {
   const [isDefault, setIsDefault] = useState(false);
   const [isExcluded, setIsExcluded] = useState(false);
   const navigate = useNavigate();
+
+ 
+  useEffect(() => {
+    const savedAccountDetails = localStorage.getItem('newAccountDetails');
+    if (savedAccountDetails) {
+      const accountDetails = JSON.parse(savedAccountDetails);
+      setSelectedAccountType(accountDetails.type);
+      setCardholderName(accountDetails.cardholderName);
+      setAccountName(accountDetails.accountName);
+      setAmount(accountDetails.amount);
+      setColor(accountDetails.color);
+      setIsDefault(accountDetails.isDefault);
+      setIsExcluded(accountDetails.isExcluded);
+    }
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +44,10 @@ const AddAccountDetails = () => {
       isDefault,
       isExcluded,
     };
+
+   
+    localStorage.setItem('newAccountDetails', JSON.stringify(newAccount));
+
     navigate('/addaccount', { state: { newAccount } });
   };
 
