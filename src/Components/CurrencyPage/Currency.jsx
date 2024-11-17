@@ -12,15 +12,20 @@ const Currency = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const savedCurrency = localStorage.getItem('selectedCurrency');
+    if (savedCurrency) {
+      setSelectedCurrency(JSON.parse(savedCurrency));
+    }
+
     fetch('/currency.xlsx')
-      .then(response => response.arrayBuffer())
-      .then(data => {
+      .then((response) => response.arrayBuffer())
+      .then((data) => {
         const workbook = XLSX.read(data, { type: 'array' });
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-        const parsedCurrencies = jsonData.slice(1).map(row => ({
+        const parsedCurrencies = jsonData.slice(1).map((row) => ({
           name: row[0],
           code: row[1],
           symbol: row[2],
@@ -34,13 +39,16 @@ const Currency = () => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  const filteredCurrencies = currencies.filter(currency =>
-    currency.name.toLowerCase().includes(searchTerm) ||
-    currency.code.toLowerCase().includes(searchTerm)
+  const filteredCurrencies = currencies.filter(
+    (currency) =>
+      currency.name.toLowerCase().includes(searchTerm) ||
+      currency.code.toLowerCase().includes(searchTerm)
   );
 
   const handleCurrencySelect = (currency) => {
     setSelectedCurrency(currency);
+    // Save the selected currency to local storage
+    localStorage.setItem('selectedCurrency', JSON.stringify(currency));
   };
 
   const handleDoneClick = () => {
@@ -72,10 +80,14 @@ const Currency = () => {
       </div>
 
       <div className="currency-list">
-        {filteredCurrencies.map(currency => (
+        {filteredCurrencies.map((currency) => (
           <div
             key={currency.code}
-            className={`currency-item ${selectedCurrency === currency ? 'selected' : ''}`}
+            className={`currency-item ${
+              selectedCurrency && selectedCurrency.code === currency.code
+                ? 'selected'
+                : ''
+            }`}
             onClick={() => handleCurrencySelect(currency)}
           >
             <span>{currency.symbol}</span>

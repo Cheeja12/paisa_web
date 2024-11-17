@@ -66,11 +66,10 @@ const AddAccount = () => {
         overflowX: 'hidden'  
       }}
     >
-      {/* Centered Icon at the top */}
       <Box sx={{ textAlign: 'center', marginTop: '50px' }}>
         <CardMedia 
           component="img" 
-          src={icon}  // Displaying the imported icon
+          src={icon}  
           alt="Icon" 
           sx={{ 
             width: 80, 
