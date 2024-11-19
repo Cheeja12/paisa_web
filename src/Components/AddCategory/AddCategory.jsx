@@ -4,19 +4,19 @@ import { Box, Typography, Button, IconButton, Divider } from '@mui/material';
 import shapesImg from '../../assets/Images/AddCategory/AddCategory.png';
 
 
-const categories = [
-  { name: 'Childcare', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/baby.png' },
-  { name: 'Clothing', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/t-shirt.png' },
-  { name: 'Dining', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/restaurant.png' },
-  { name: 'Education', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/graduation-cap.png' },
-  { name: 'Entertainment', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/game-controller.png' },
-  { name: 'Gifts', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/gift.png' },
-  { name: 'Groceries', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/shopping-cart.png' },
-  { name: 'Health & Medical', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/stethoscope.png' },
-  { name: 'Pet Care', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/paw.png' },
-  { name: 'Subscription', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/credit-card.png' },
-  { name: 'Transportation', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/car.png' },
-  { name: 'Travel', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/airplane.png' },
+const categories = [   
+  { name: 'Childcare', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/baby.png' },   
+  { name: 'Clothing', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/t-shirt.png' },   
+  { name: 'Dining', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/restaurant.png' },   
+  { name: 'Education', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/graduation-cap.png' },   
+  { name: 'Entertainment', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/movie.png' },  
+  { name: 'Gifts', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/gift.png' },   
+  { name: 'Groceries', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/shopping-cart.png' },   
+  { name: 'Health & Medical', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/stethoscope.png' },   
+  { name: 'Pet Care', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/dog.png' },
+  { name: 'Subscription', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/recurring-appointment.png' },   
+  { name: 'Transportation', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/car.png' },   
+  { name: 'Travel', icon: 'https://img.icons8.com/ios-glyphs/30/ffffff/suitcase.png' },   
 ];
 
 const AddCategory = () => {
