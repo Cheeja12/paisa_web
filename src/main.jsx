@@ -10,6 +10,7 @@ import AddAccount from './Components/AddAccount/AddAccount';
 import AddAccountDetails from './Components/AddAccountDetail/AddAccountDetails';
 import AddCategory from './Components/AddCategory/AddCategory';
 import Currency from './Components/CurrencyPage/Currency';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 
 
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/addaccountdetails" element={<AddAccountDetails />} />
         <Route path="/addcategory" element={<AddCategory />} />
         <Route path="/currency" element={<Currency />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   </React.StrictMode>

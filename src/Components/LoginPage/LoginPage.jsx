@@ -12,6 +12,9 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+//for admin login to access dashboard
+  const ADMIN_EMAIL = 'admin@example.com';
+  const ADMIN_PASSWORD = 'password'; 
 
   const validate = () => {
     const errors = {};
@@ -22,8 +25,6 @@ const LoginPage = () => {
     }
     if (!password) {
       errors.password = 'Password is required';
-    } else if (password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
     }
     return errors;
   };
@@ -34,12 +35,19 @@ const LoginPage = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      setSuccess(true);
-      console.log('Form submitted:', { email, password });
-
-      setTimeout(() => {
-        navigate('/AddAccount');
-      }, 2000); 
+      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+        setSuccess(true);
+        console.log('Admin logged in successfully');
+        setTimeout(() => {
+          navigate('/dashboard'); 
+        }, 2000);
+      } else {
+        setSuccess(true);
+        console.log('Normal user logged in');
+        setTimeout(() => {
+          navigate('/addaccount');
+        }, 2000);
+      }
     }
   };
 
@@ -49,12 +57,23 @@ const LoginPage = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Google Sign-In Success:', user);
-      setSuccess(true);
-      setTimeout(() => {
-        navigate('/AddAccount');
-      }, 2000);
+
+      if (user.email === ADMIN_EMAIL) {
+        setSuccess(true);
+        console.log('Google Admin Sign-In Success:', user);
+        setTimeout(() => {
+          navigate('/dashboard'); 
+        }, 2000);
+      } else {
+        setSuccess(true);
+        console.log('Google Normal User Sign-In Success');
+        setTimeout(() => {
+          navigate('/addaccount'); 
+        }, 2000);
+      }
     } catch (error) {
       console.error('Google Sign-In Error:', error.message);
+      alert(`Google Sign-In failed: ${error.message}`);
     }
   };
 
@@ -78,7 +97,7 @@ const LoginPage = () => {
           boxShadow: 3,
           textAlign: 'center',
           width: '100%',
-          maxWidth: 400, 
+          maxWidth: 400,
         }}
       >
         <Typography variant="h4" gutterBottom color="#0070a9">

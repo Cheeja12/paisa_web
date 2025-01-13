@@ -5,7 +5,7 @@ import HomePage from '../components/HomePage';
 import LoginPage from '../components/LoginPage';
 import SignupPage from '../components/SignupPage';
 import NavBar from '../components/NavBar';
-import TermsPage from '../components/TermsPage'
+import TermsPage from '../components/TermsPage';
 
 const App = () => {
   return (
